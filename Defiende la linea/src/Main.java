@@ -1,6 +1,7 @@
 import core.*;
 import objetos.Fondo;
 import objetos.Soldado;
+import objetos.Spawner;
 import renders.Renderer;
 import update.Updater;
 
@@ -46,6 +47,7 @@ public class Main {
         //oolean arrancaJuego = true;
         new Fondo(0,0);
         new Soldado(300,680);
+        new Spawner();
         FPS.calcinicioTiempo();
         while (arrancaJuego[0]) {
             //actualizamos el estado del juego
