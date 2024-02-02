@@ -16,10 +16,8 @@ public interface Updateable {
     double getY();
     public  String getID();
     public Renderable getRenderable();
-    // kpublic double obj_y = thisObject.getX();
 
     public default Updateable colisionando(Renderable thisObject, String otherObjectID){
-
         ArrayList<Updateable> objetos = Updater.getUpdateableObj();
         for (Updateable object: objetos)
             if(object.getID()==otherObjectID)
