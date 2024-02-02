@@ -1,5 +1,6 @@
 import core.*;
 import objetos.Fondo;
+import objetos.Fondo_linea;
 import objetos.Soldado;
 import objetos.Spawner;
 import renders.Renderer;
@@ -46,6 +47,7 @@ public class Main {
         //Arranca el juego
         //oolean arrancaJuego = true;
         new Fondo(0,0);
+        new Fondo_linea(0,700);
         new Soldado(300,680);
         new Spawner();
         FPS.calcinicioTiempo();
