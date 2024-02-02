@@ -100,7 +100,20 @@ public class Soldado implements Renderable, Updateable {
             x += velocidad * FPS.obtTiempodelta();
         if (Input.teclas[Input.IZQ] && x >= 0)
             x -= velocidad * FPS.obtTiempodelta();
+        if (Input.teclas[Input.ESPACIO] && timer.estaSonando()) {
+            new Bala(x + (getAncho() / 2), y);
+            timer.resetTiempo();
+        }
 
+        Updateable objcolisionando = colisionando(this, "enemigo");
 
+        if (objcolisionando != null) {
+            //System.out.println(objcolisionando);
+            Updater.BorrarupdateableObj(this);
+            Renderer.borrarRendereableObj(this);
+
+            Updater.BorrarupdateableObj(objcolisionando);
+            Renderer.borrarRendereableObj(objcolisionando.getRenderable());
+        }
     }
 }
