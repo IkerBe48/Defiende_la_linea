@@ -50,6 +50,7 @@ public class Timer implements Updateable {
         }
         return false;
     }
+    //Reinicia el timer
     public Object resetTiempo(){
             setMillisTiempo = empezarMillisTiempo;
         return null;

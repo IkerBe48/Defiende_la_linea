@@ -1,23 +1,17 @@
 package objetos;
 
-import com.sun.tools.javac.Main;
 import core.FPS;
-import core.Input;
-import core.Timer;
 import core.ventana;
-import core.ventana_fin;
 import renders.Renderable;
 import renders.Renderer;
 import update.Updateable;
 import update.Updater;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.IllegalFormatCodePointException;
 import java.util.Random;
 
 public class Enemigo implements  Updateable, Renderable{
@@ -93,8 +87,8 @@ public class Enemigo implements  Updateable, Renderable{
             Updater.BorrarupdateableObj(this);
             Updater.BorrarupdateableObj(this);
         }
+        //Si el enemigo toca el fondo de la linea (a traves de sus coordenadas X e Y) finaliza el juego
         Updateable objcolisionando = colisionando(this, "fondo_linea");
-        //System.out.println(y);
         if (objcolisionando != null) {
             throw new IOException("FIN");
         }

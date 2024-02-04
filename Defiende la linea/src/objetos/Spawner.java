@@ -9,10 +9,8 @@ import update.Updater;
 import java.io.IOException;
 
 public class Spawner implements Updateable {
-
+    //Se llama al temporizador y en este caso queremos que cada segundo aparezca un enemigo nuevo
     Timer tiempo = new Timer(1000);
-
-    Timer tiempo2 = new Timer(1000);
 
     public Spawner(){
         Updater.AddupdateableObj(this);

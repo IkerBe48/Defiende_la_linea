@@ -96,6 +96,7 @@ public class Soldado implements Renderable, Updateable {
 
     @Override
     public void update() throws IOException{
+        //Dependiendo de que INPUT devuelva true, se movera a la izquierda, derecha o disparará
         if (Input.teclas[Input.DER]&& x<= ventana.getvAncho()-ancho)
             x += velocidad * FPS.obtTiempodelta();
         if (Input.teclas[Input.IZQ] && x >= 0)
@@ -104,11 +105,10 @@ public class Soldado implements Renderable, Updateable {
             new Bala(x + (getAncho() / 2), y);
             timer.resetTiempo();
         }
-
+        //Si enemigo toca a Soldado, el soldado desaparece
         Updateable objcolisionando = colisionando(this, "enemigo");
 
         if (objcolisionando != null) {
-            //System.out.println(objcolisionando);
             Updater.BorrarupdateableObj(this);
             Renderer.borrarRendereableObj(this);
 
