@@ -37,7 +37,9 @@ public class Main {
         programador.scheduleAtFixedRate(ejecutable, 0, 1, SECONDS);
 
         Window pantalla = new ventana("Defiende la frontera", ventana.getvAncho(),ventana.getvAlto());
+        //Muestra los sprites
         Renderer renderer = new Renderer();
+        //Clase que actualiza elestado y la posicion
         Updater updater = new Updater();
 
         pantalla.addKeyListener(new Input());
@@ -49,6 +51,7 @@ public class Main {
         new Fondo(0,0);
         new Fondo_linea(0,700);
         new Soldado(300,680);
+        //Generador de enemigos
         new Spawner();
         FPS.calcinicioTiempo();
         while (arrancaJuego[0]) {

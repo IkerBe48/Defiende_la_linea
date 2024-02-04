@@ -22,7 +22,7 @@ public class Fondo implements Renderable, Updateable{
     public Fondo(double x, double y) throws IOException {
         this.x = x;
         this.y = y;
-
+        //Se obtiene la imagen que queremos para el fondo
         fondo = ImageIO.read(new File("res/fondo.PNG"));
         Renderer.addRendereableObj(this);
         Updater.AddupdateableObj(this);

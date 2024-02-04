@@ -18,11 +18,12 @@ public class Renderer extends JPanel {
         for (Renderable object: renderableObj)
             object.pintar(g2d);
     }
-
+    //Al llamar a este evento, se añade el objeto
     public static void addRendereableObj(Renderable object){
         renderableObj.add(object);
         Collections.sort(renderableObj);
     }
+    //Al llamar a este evento, se elimina el objeto
     public static void borrarRendereableObj(Renderable object){
         renderableObj.remove(object);
     }

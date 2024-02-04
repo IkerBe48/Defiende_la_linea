@@ -18,7 +18,10 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
+import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MainTest {
@@ -29,45 +32,65 @@ public class MainTest {
 
         Spawner spawner = new Spawner();
         //Si está en negativo,
-        Timer tiempo = new Timer(-1);
+        Timer tiempo = new Timer(1);
 
         spawner.update();
-            if (tiempo.estaSonando()) {
-                new Enemigo();
+        if (tiempo.estaSonando()) {
+            new Enemigo();
 
-                tiempo.resetTiempo();
-            }
-            System.out.println(tiempo.estaSonando());
+            tiempo.resetTiempo();
+        }
+        System.out.println(tiempo.estaSonando());
         if (tiempo.estaSonando())
-            Assert.assertTrue("El timer esta sonando y por lo tanto no aparecen enemigos",tiempo.estaSonando());
+            Assert.assertTrue("El timer esta sonando y por lo tanto no aparecen enemigos", tiempo.estaSonando());
         else
-            Assert.assertFalse("El timer no esta sonando y por lo tanto aparecen enemigos",tiempo.estaSonando());
-        }
-
-        @Test
-        public void test1() throws IOException{
-        //System.out.println("Null");
-        int x = 0;
-        int y = 0;
-            Soldado soldado = new Soldado(x,y);
-            //Solo valen los numeros 0, 1 y 2
-            int tecla = 3;
-            if (Input.teclas[tecla])
-
-                Assert.assertTrue("Tecla correcta",Input.teclas[tecla]);
-            else
-                Assert.assertFalse("Tecla incorrecta",Input.teclas[tecla]);
-        }
-
-        @Test
-    public void test3() throws IOException {
-            Enemigo enemigo = new Enemigo();
-            enemigo.update();
-            Updateable updateable;
-
-            //System.out.println(y);
-        }
+            Assert.assertTrue("El timer no esta sonando y por lo tanto aparecen enemigos", tiempo.estaSonando());
     }
+
+    @Test
+    public void test1() throws IOException {
+
+        Input input = new Input();
+
+         input.teclas = new boolean[3];
+        //Solo valen los numeros 0, 1 y 2
+        int tecla = 0;
+
+        if (tecla == 1 || tecla == 2 || tecla == 0) {
+            input.teclas[tecla] = true;
+        }
+        Assert.assertTrue("Tecla correcta", input.teclas[tecla]);
+    }
+
+    @Test
+    public void test3() throws IOException {
+        final ScheduledExecutorService programador = Executors.newScheduledThreadPool(1);
+        boolean fin[] = new boolean[]{true};
+        int contadorinicio = 2;
+        final Runnable ejecutable = new Runnable() {
+            public void run() {
+                if (contadorinicio <= 0) {
+
+                    fin[0] = true;
+                } else {
+                    fin[0] = false;
+                }
+            }
+        };
+        programador.scheduleAtFixedRate(ejecutable, 0, 1, SECONDS);
+        System.out.println("El contador " + contadorinicio);
+        if (fin[0] == false) {
+            System.out.println("El contador no ha finalizado " + fin[0]);
+            Assert.assertEquals(contadorinicio <= 0, true);
+        } else {
+            System.out.println("El contador ha finalizado " + fin[0]);
+            Assert.assertEquals(contadorinicio <= 0, true);
+
+        }
+
+    }
+
+}
 
 
 

@@ -14,7 +14,7 @@ public class Input implements KeyListener {
     public void keyTyped(KeyEvent e) {
 
     }
-
+    //El evento getKeyCode obtiene el input por teclado. Dependiendo de la tecla, devolera true para iniciar otro evento
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_LEFT)
